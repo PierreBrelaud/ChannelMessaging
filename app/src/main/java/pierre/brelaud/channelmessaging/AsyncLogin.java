@@ -49,10 +49,12 @@ public class AsyncLogin extends AsyncTask<Long,Integer,String> {
     private Context myContext;
     private HashMap<String, String> login = new HashMap<>();
     public ArrayList<OnDownloadCompleteListener> listeners = new ArrayList<>();
+    public String url;
 
-    public AsyncLogin(Context myContext, HashMap login) {
+    public AsyncLogin(Context myContext, HashMap login, String url) {
         this.myContext = myContext;
         this.login = login;
+        this.url = url;
     }
 
     @Override
@@ -77,7 +79,7 @@ public class AsyncLogin extends AsyncTask<Long,Integer,String> {
     @Override
     protected String doInBackground(Long... params) {
 
-        return performPostCall("http://www.raphaelbischof.fr/messaging/?function=connect", login);
+        return performPostCall(url, login);
     }
 
     public String performPostCall(String requestURL, HashMap<String, String> postDataParams) {
