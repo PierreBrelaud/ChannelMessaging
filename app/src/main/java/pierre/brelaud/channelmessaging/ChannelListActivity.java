@@ -38,7 +38,7 @@ public class ChannelListActivity extends Activity implements View.OnClickListene
 
         HashMap<String, String> h = new HashMap<>();
         h.put("accesstoken",accesstoken);
-        AsyncLogin task = new AsyncLogin(getApplicationContext(), h, "http://www.raphaelbischof.fr/messaging/?function=getchannels");
+        AsyncMethod task = new AsyncMethod(h, "http://www.raphaelbischof.fr/messaging/?function=getchannels", 2);
         task.setOnDownloadCompleteListener(this);
         task.execute();
     }
@@ -58,7 +58,7 @@ public class ChannelListActivity extends Activity implements View.OnClickListene
     }
 
     @Override
-    public void onDownloadComplete(String result) {
+    public void onDownloadComplete(String result, int type) {
         Gson g = new Gson();
         ch = g.fromJson(result, Channels.class);
 
@@ -66,4 +66,5 @@ public class ChannelListActivity extends Activity implements View.OnClickListene
         listView.setOnItemClickListener(this);
 
     }
+
 }

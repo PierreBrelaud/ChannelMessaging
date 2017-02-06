@@ -7,12 +7,14 @@ import java.util.Date;
  */
 public class Message {
     public final String userID;
+    public final String username;
     public final String message;
     public final String date;
     public final String imageUrl;
 
-    public Message(String userID, String message, String date, String imageUrl) {
+    public Message(String userID, String username, String message, String date, String imageUrl) {
         this.userID = userID;
+        this.username = username;
         this.message = message;
         this.date = date;
         this.imageUrl = imageUrl;

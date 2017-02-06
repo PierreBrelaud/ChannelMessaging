@@ -1,30 +1,6 @@
 package pierre.brelaud.channelmessaging;
 
-/**
- * Created by brelaudp on 23/01/2017.
- */
-
 import android.content.Context;
-import android.os.AsyncTask;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.net.ssl.HttpsURLConnection;
-
-
-import android.content.Context;
-import android.os.AsyncTask;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -44,17 +20,17 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * Created by brelaudp on 23/01/2017.
  */
-public class AsyncLogin extends AsyncTask<Long,Integer,String> {
+public class AsyncMethod extends android.os.AsyncTask<Long,Integer,String> {
 
-    private Context myContext;
-    private HashMap<String, String> login = new HashMap<>();
+    private HashMap<String, String> postAsync = new HashMap<>();
     public ArrayList<OnDownloadCompleteListener> listeners = new ArrayList<>();
     public String url;
+    public int type;
 
-    public AsyncLogin(Context myContext, HashMap login, String url) {
-        this.myContext = myContext;
-        this.login = login;
+    public AsyncMethod(HashMap postAsync, String url, int type) {
+        this.postAsync = postAsync;
         this.url = url;
+        this.type = type;
     }
 
     @Override
@@ -71,7 +47,7 @@ public class AsyncLogin extends AsyncTask<Long,Integer,String> {
     protected void onPostExecute(String result) {
 
         for (OnDownloadCompleteListener listener : listeners) {
-            listener.onDownloadComplete(result);
+            listener.onDownloadComplete(result, type);
         }
     }
 
@@ -79,7 +55,7 @@ public class AsyncLogin extends AsyncTask<Long,Integer,String> {
     @Override
     protected String doInBackground(Long... params) {
 
-        return performPostCall(url, login);
+        return performPostCall(url, postAsync);
     }
 
     public String performPostCall(String requestURL, HashMap<String, String> postDataParams) {
