@@ -34,7 +34,6 @@ public class MessageAdapter extends ArrayAdapter<Message>{
         TextView text = (TextView) rowView.findViewById(R.id.tvDate);
         text.setText(list.messages.get(position).date);
 
-
         return rowView;
     }
 }

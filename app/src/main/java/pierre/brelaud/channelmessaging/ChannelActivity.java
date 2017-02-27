@@ -41,23 +41,28 @@ public class ChannelActivity extends Activity implements View.OnClickListener, O
         llMessage = (LinearLayout) findViewById(R.id.llMessage);
 
 
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        HashMap<String, String> h = new HashMap<>();
+        final Runnable r = new Runnable() {
+            public void run() {
+                SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+                HashMap<String, String> h = new HashMap<>();
 
-        String token = settings.getString("accesstoken", "");
-        String id = getIntent().getStringExtra("channelid");
+                String token = settings.getString("accesstoken", "");
+                String id = getIntent().getStringExtra("channelid");
 
-        h.put("accesstoken",settings.getString("accesstoken","Yo"));
-        h.put("channelid", getIntent().getStringExtra("channelid"));
+                h.put("accesstoken",settings.getString("accesstoken","Yo"));
+                h.put("channelid", getIntent().getStringExtra("channelid"));
 
-        varId = id;
-        varToken = token;
+                varId = id;
+                varToken = token;
 
+                AsyncMethod task = new AsyncMethod(h, "http://www.raphaelbischof.fr/messaging/?function=getmessages",1);
+                task.setOnDownloadCompleteListener(ChannelActivity.this);
+                task.execute();
 
-        AsyncMethod task = new AsyncMethod(h, "http://www.raphaelbischof.fr/messaging/?function=getmessages",1);
-        task.setOnDownloadCompleteListener(this);
-        task.execute();
-
+                handler.postDelayed(this, 1000);
+            }
+        };
+        handler.postDelayed(r, 1000);
     }
 
     @Override
