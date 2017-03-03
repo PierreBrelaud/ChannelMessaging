@@ -4,15 +4,15 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Liste des channels"
-        android:id="@+id/textView"
-        android:layout_weight="0.04"
-        android:textStyle="bold|italic"
-        android:textSize="60px" />
+        android:layout_height="185dp"
+        android:id="@+id/imageView2"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/channel_messaging_logo"
+        android:padding="16dp"
+        android:background="#3498db"
+        android:layout_marginBottom="20dp"/>
 
     <ListView
         android:layout_width="match_parent"
