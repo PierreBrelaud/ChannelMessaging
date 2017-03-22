@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -18,7 +19,7 @@ import java.util.HashMap;
 /**
  * Created by brelaudp on 27/01/2017.
  */
-public class ChannelActivity extends Activity implements View.OnClickListener, OnDownloadCompleteListener, AdapterView.OnItemClickListener {
+public class ChannelActivity extends AppCompatActivity implements View.OnClickListener, OnDownloadCompleteListener, AdapterView.OnItemClickListener {
     private static final String PREFS_NAME = "MyPrefsFile" ;
     private Button btnSend;
     private EditText etMessage;

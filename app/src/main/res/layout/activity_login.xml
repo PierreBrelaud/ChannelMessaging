@@ -16,7 +16,7 @@
         android:id="@+id/imageView"
         android:src="@drawable/channel_messaging_logo"
         android:layout_gravity="center_horizontal"
-        android:background="#3498db"
+        android:background="#2980b9"
         android:padding="16dp" />
 
     <android.support.design.widget.TextInputLayout
@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:hint="Identifiant"
+            android:paddingLeft="0dp"
             android:textColor="#34495e"
             android:textColorHighlight="#34495e"
             android:textColorLink="#34495e"/>
@@ -41,7 +42,7 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/input_layout_id"
-        android:layout_width="match_parent"00.
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:textColorHint="#34495e">
@@ -67,7 +68,7 @@
         android:id="@+id/btnValider"
         android:layout_marginTop="38dp"
         android:textColor="#ecf0f1"
-        android:background="#3498db"
+        android:background="#2980b9"
         android:layout_gravity="center_horizontal"
         android:textSize="20sp"
         android:layout_marginBottom="30dp"

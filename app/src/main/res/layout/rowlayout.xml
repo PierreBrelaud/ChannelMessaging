@@ -6,13 +6,16 @@
     android:id="@+id/rowId">
 
     <TextView
-        android:layout_width="342dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/textViewChannel"
-        android:textColor="@color/abc_input_method_navigation_guard"
-        android:layout_weight="0.05" />
+        android:textColor="#2c3e50"
+        android:layout_weight="0.05"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:layout_marginBottom="5dp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -20,6 +23,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Small Text"
         android:id="@+id/textViewText"
-        android:textColor="#123ce5"
-        android:layout_weight="0.06" />
+        android:textColor="@color/abc_hint_foreground_material_light"
+        android:layout_weight="0.06"
+        android:paddingLeft="25dp"
+        android:layout_marginBottom="5dp"/>
 </LinearLayout>

@@ -1,12 +1,15 @@
 package pierre.brelaud.channelmessaging;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -18,6 +21,7 @@ public class LoginActivity extends Activity implements View.OnClickListener, OnD
     private Button btnValider;
     private EditText etId;
     private EditText etPassword;
+    private ImageView mIvLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,10 @@ public class LoginActivity extends Activity implements View.OnClickListener, OnD
         btnValider = (Button) findViewById(R.id.btnValider);
         btnValider.setOnClickListener(this);
 
+        etId.setText("pbrel");
+        etPassword.setText("pierrebrelaud");
+
+        mIvLogo = (ImageView) findViewById(R.id.imageView);
     }
 
     @Override
@@ -51,8 +59,8 @@ public class LoginActivity extends Activity implements View.OnClickListener, OnD
         if(co.code.equals("200"))
         {
             Toast.makeText(LoginActivity.this,"Connexion réussie", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(getApplicationContext(), ChannelListActivity.class);
-            startActivity(i);
+            Intent loginIntent = new Intent(getApplicationContext(), ChannelListActivity.class);
+            startActivity(loginIntent, ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this, mIvLogo, "logo").toBundle());
         }
         else
         {
